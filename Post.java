@@ -11,8 +11,11 @@ public class Post {
 	private long timestamp;
 	private ArrayList<CommentedPost> commentedPosts;
 	private ArrayList<EventPost> eventPosts;
-	private static int num_event_posts = 0;
-	private static int num_commented_posts = 0;
+
+	// Number of EventPosts
+	private static int numEventPosts = 0;
+	// Number of Commented Posts
+	private static int numCommentedPosts = 0;
 
 	/**
      	 * Constructor for objects of class Post 
@@ -34,6 +37,7 @@ public class Post {
 		} else {
 			throw new NullPointerException();
 		}
+		// Initialize posts
 		commentedPosts = new ArrayList<CommentedPost>();
 		eventPosts = new ArrayList<EventPost>();
 	}
@@ -45,7 +49,7 @@ public class Post {
      	 */
 	public void addCommentedPost(CommentedPost post) {
 		commentedPosts.add(post);
-		num_commented_posts++;
+		numCommentedPosts++;
 	}
 
 	/**
@@ -55,7 +59,7 @@ public class Post {
      	 */
 	public void addEventPost(EventPost post) {
 		eventPosts.add(post);
-		num_event_posts++;
+		numEventPosts++;
 	}
 
 	/**
@@ -106,10 +110,13 @@ public class Post {
      	 * Method for getting time lapsed since the post was added
      	 */
 	public void getTimelapsed() {
+		// Calculate time lapsed since the post
 		long current = System.currentTimeMillis();
 		long lapsedSec = (current - timestamp)/1000;
 		int lapsedMin = (int) lapsedSec/60;
 		int lapsedHours = (int)lapsedMin/60;
+
+		// If more that 24 hours, display in Days
 		if (lapsedHours >= 24) {
 			System.out.println(lapsedHours/24+" Days ago");
 		} else {
@@ -128,7 +135,8 @@ public class Post {
 	 *
      	 */
 	public void displayCommentedPosts() {
-		System.out.println("Number of Commented Posts " + num_commented_posts);
+		System.out.println("Number of Commented Posts " + numCommentedPosts);
+		// Iterate through all CommentedPosts's
 		for (CommentedPost c : commentedPosts) {
 			c.display();
 		}
@@ -139,7 +147,8 @@ public class Post {
 	 *
      	 */
 	public void displayEventPosts() {
-		System.out.println("Number of Event Posts " + num_event_posts);
+		System.out.println("Number of Event Posts " + numEventPosts);
+		// Iterate through all EventPosts's
 		for (EventPost e : eventPosts) {
 			System.out.println("User " + e.getUsername() + " added " + e.getEventType());
 		}
@@ -155,8 +164,8 @@ public class Post {
 		for (EventPost e : eventPosts) {
 			obj.eventPosts.add(e.cloneEventPost());
 		}
-		obj.num_event_posts = num_event_posts;
-		obj.num_commented_posts = num_commented_posts;
+		obj.numEventPosts = numEventPosts;
+		obj.numCommentedPosts = numCommentedPosts;
 		return obj;
 	}
 }

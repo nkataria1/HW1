@@ -21,6 +21,7 @@ public class PhotoPost extends CommentedPost {
 		if (fileName != null) {
 			filename = fileName;
 		} else {
+			// If file name is null throw an exception
 			System.out.println("Message is empty");
 			throw new NullPointerException();
 		}
@@ -35,6 +36,7 @@ public class PhotoPost extends CommentedPost {
 		if (fileName != null) {
 			filename = fileName;
 		} else {
+			// If file name is null throw an exception
 			System.out.println("Message is empty");
 			throw new NullPointerException();
 		}
@@ -71,6 +73,7 @@ public class PhotoPost extends CommentedPost {
          * Method for displaying metadata for the PhotoPost
          */
 	public void display() {
+		// Display metadata for PhotoPost
 		System.out.print("User " + getUsername() + " posted file " + filename + " with caption " + caption + " ");
 		getTimelapsed();
 		displayLikesComments();
@@ -93,6 +96,7 @@ public class PhotoPost extends CommentedPost {
 		obj.filename = new String(filename);
 		obj.caption = new String(caption);
 		obj.setLikes(getLikes());
+		// Clone all the comments
 		ArrayList<String> commentList = getComments();
                 for(String c : commentList) {
                        obj.addComment(new String(c));

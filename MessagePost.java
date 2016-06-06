@@ -20,6 +20,7 @@ public class MessagePost extends CommentedPost {
 		if (text != null) {
 			message = text;
 		} else {
+			// If message is empty, throw exception
 			System.out.println("Message is empty");
 			throw new NullPointerException();
 		}
@@ -34,6 +35,7 @@ public class MessagePost extends CommentedPost {
 		if (text != null) {
 			message = text;
 		} else {
+			// If message is empty, throw exception
 			System.out.println("Message is empty");
 			throw new NullPointerException();
 		}
@@ -53,6 +55,7 @@ public class MessagePost extends CommentedPost {
          *
          */
 	public void display() {
+		// Display metadata for Message Posts
 		System.out.print("User " + getUsername() + " Posted Message ");
 		getTimelapsed();
 		System.out.println(message);
@@ -64,6 +67,7 @@ public class MessagePost extends CommentedPost {
 	 * @return CommentedPost Instance
 	 */
 	public CommentedPost cloneCommentedPost() {
+		// Method implemented if clone is called from CommentedPost
 		return cloneMessagePost(); 
 	}
 
@@ -72,8 +76,10 @@ public class MessagePost extends CommentedPost {
 	 * @return Instance of MessagePost
          */
         public MessagePost cloneMessagePost() {
+		// Clone Message Post
                 MessagePost obj = new MessagePost(getUsername(), message);
 		obj.setLikes(getLikes());
+		// Clone all the comments
 		ArrayList<String> commentList = getComments();
                 for(String c : commentList) {
                        obj.addComment(new String(c));

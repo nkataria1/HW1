@@ -11,6 +11,7 @@ enum EventType {
  * @version 1.0
  */
 public class EventPost extends Post {
+	// Predefined EventType or Custom Event Type
 	private String eventType;
 
         /**
@@ -53,6 +54,7 @@ public class EventPost extends Post {
 		if (event != null) {
 			eventType = event;
 		} else {
+			// If event is null, throw exception
 			throw new NullPointerException();
 		}
 	}
@@ -67,6 +69,7 @@ public class EventPost extends Post {
 	}
 
 	public EventPost cloneEventPost() {
+		// Clone EventPost
 		EventPost obj = new EventPost(getUsername(), getEventType());
 		return obj;
 	}

@@ -82,6 +82,7 @@ public abstract class CommentedPost extends Post {
 	 */
 	public void displayLikesComments() {
 		System.out.println("Comments:");
+		// Print likes and comments
 		for(String c : comments) {
 			if (!c.isEmpty());
 			System.out.println(c.toString());
